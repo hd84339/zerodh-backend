@@ -17,9 +17,15 @@ const mongoUrl = process.env.MONGO_URL;
 
 const app = express();
 
-// CORS configuration for mobile and web access
+// CORS configuration for production and development
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://192.168.43.122:3000', 'http://192.168.43.122:3001'],
+  origin: [
+    'https://zerodh-frontend.netlify.app',
+    'https://zerodh-dashboard.netlify.app',
+    // Allow localhost for development
+    'http://localhost:3000',
+    'http://localhost:3001'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
